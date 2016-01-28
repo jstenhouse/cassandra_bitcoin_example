@@ -29,6 +29,8 @@ public class User {
     @Column("updated_at")
     private Date updatedAt;
 
+    public User() {}
+
     public User(final UUID id, final String firstName, final String lastName, final String email, final Date updatedAt) {
         this.id = id;
         this.firstName = firstName;
@@ -41,20 +43,40 @@ public class User {
         return id;
     }
 
+    public void setId(final UUID id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(final String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
+    public void setLastName(final String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(final String email) {
+        this.email = email;
+    }
+
     public Date getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void setUpdatedAt(final Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
