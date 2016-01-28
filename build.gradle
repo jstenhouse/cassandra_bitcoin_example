@@ -39,6 +39,7 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile "org.springframework.boot:spring-boot-starter-jetty:$springBootVersion"
     compile "org.springframework.boot:spring-boot-actuator:$springBootVersion"
+    compile "org.springframework.data:spring-data-cassandra:$springBootVersion"
 
     compile 'com.google.guava:guava:19.0'
 
