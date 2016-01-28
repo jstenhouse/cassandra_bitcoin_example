@@ -33,6 +33,10 @@ curl -H "Content-Type: application/json" -X PUT -d '{"firstName":"Eddy", "lastNa
 
 TODO
 
+### WalletAddresses
+
+TODO
+
 ### Cassandra Data
 
 ```
