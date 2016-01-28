@@ -4,7 +4,7 @@
 
 ## Use
 
-**Note:** Cassandra needs to be running first.
+**Note:** Cassandra needs to be running first with the right schema.
 
 ```
 CASSANDRA_KEYSPACE=bitcoin ./gradlew run
