@@ -1,41 +1,71 @@
 package com.stenhouse.cassandra.bitcoin.model;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.google.common.base.MoreObjects;
-import com.stenhouse.cassandra.bitcoin.controller.UserWalletController;
 import org.springframework.cassandra.core.PrimaryKeyType;
-import org.springframework.data.cassandra.mapping.PrimaryKey;
-import org.springframework.data.cassandra.mapping.PrimaryKeyClass;
-import org.springframework.data.cassandra.mapping.PrimaryKeyColumn;
-import org.springframework.data.cassandra.mapping.Table;
+import org.springframework.data.cassandra.mapping.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
 /**
  * Created by jason on 1/27/16.
  */
-@Table
+@Table("user_wallets")
 public class UserWallet {
 
     @PrimaryKey
+    @JsonUnwrapped
     private UserWalletId id;
 
-    public UserWallet(final UserWalletId id) {
+    @Column
+    private String name;
+
+    @Column("updated_at")
+    private Date updatedAt;
+
+    public UserWallet() {}
+
+    public UserWallet(final UserWalletId id, final String name, final Date updatedAt) {
         this.id = id;
+        this.name = name;
+        this.updatedAt = updatedAt;
     }
 
     public UserWalletId getId() {
         return id;
     }
 
+    public void setId(final UserWalletId id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(final String name) {
+        this.name = name;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(final Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("id", id)
+                .add("name", name)
+                .add("updatedAt", updatedAt)
                 .toString();
     }
-
 
 
     @PrimaryKeyClass

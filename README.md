@@ -31,7 +31,21 @@ curl -H "Content-Type: application/json" -X PUT -d '{"firstName":"Eddy", "lastNa
 
 ### UserWallets
 
+#### List
+```
+http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1/wallets
+
+http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1/wallets/61728140-c5b3-11e5-9912-ba0be0483c18
+```
+
+#### Create
+
 TODO
+
+#### Update
+
+TODO
+
 
 ### WalletAddresses
 
