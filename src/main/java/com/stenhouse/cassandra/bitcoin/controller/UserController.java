@@ -43,5 +43,7 @@ public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable("id") UUID id) {
         throw new UnsupportedOperationException();
+
+        // TODO: delete all user wallets and wallet addresses
     }
 }
