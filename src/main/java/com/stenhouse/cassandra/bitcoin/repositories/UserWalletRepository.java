@@ -26,4 +26,6 @@ public interface UserWalletRepository extends CassandraRepository<UserWallet> {
     @Query("UPDATE user_wallets SET name = ?2, updated_at = toTimestamp(now()) WHERE user_id = ?0 AND id = ?1")
     UserWallet update(UUID userId, UUID id, String name);
 
+    @Query("DELETE FROM user_wallets WHERE user_id = ?0 AND id = ?1")
+    void delete(UUID userId, UUID id);
 }

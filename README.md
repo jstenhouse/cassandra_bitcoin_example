@@ -60,7 +60,9 @@ curl -H "Content-Type: application/json" -X PUT -d '{"name":"Backup Wallet2"}' h
 
 #### Delete
 
-TODO
+```
+curl -H "Content-Type: application/json" -X DELETE http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1/wallets/6849cea0-c67c-11e5-8036-abdeecb176e1
+```
 
 
 ### WalletAddresses
