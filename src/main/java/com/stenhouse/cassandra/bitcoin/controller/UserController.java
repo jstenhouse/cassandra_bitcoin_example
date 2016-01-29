@@ -39,4 +39,9 @@ public class UserController {
     public User updateUser(@PathVariable("id") UUID id, @RequestBody User user) {
         return userRepository.update(id, user.getFirstName(), user.getLastName(), user.getEmail());
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable("id") UUID id) {
+        throw new UnsupportedOperationException();
+    }
 }

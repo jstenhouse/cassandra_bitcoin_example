@@ -13,6 +13,7 @@ CASSANDRA_KEYSPACE=bitcoin ./gradlew run
 ### Users
 
 #### List
+
 ```
 http://localhost:8080/users
 
@@ -20,18 +21,25 @@ http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1
 ```
 
 #### Create
+
 ```
 curl -H "Content-Type: application/json" -X POST -d '{"firstName":"Eddy", "lastName":"Mehtimes", "email":"eddy@example.com"}' http://localhost:8080/users
 ```
 
 #### Update
+
 ```
 curl -H "Content-Type: application/json" -X PUT -d '{"firstName":"Eddy", "lastName":"Mehtimes", "email":"eddy2@example.com"}' http://localhost:8080/users/ffda7110-c5b0-11e5-8036-abdeecb176e1
 ```
 
+#### Delete
+
+TODO
+
 ### UserWallets
 
 #### List
+
 ```
 http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1/wallets
 
@@ -45,6 +53,12 @@ curl -H "Content-Type: application/json" -X POST -d '{"name":"Backup Wallet"}' h
 ```
 
 #### Update
+
+```
+curl -H "Content-Type: application/json" -X PUT -d '{"name":"Backup Wallet2"}' http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1/wallets/6849cea0-c67c-11e5-8036-abdeecb176e1
+```
+
+#### Delete
 
 TODO
 
