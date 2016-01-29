@@ -12,12 +12,15 @@ import java.util.UUID;
  */
 public interface UserWalletRepository extends CassandraRepository<UserWallet> {
 
-    // findOne with a composite primary key isn't supported as far as I can tell
+    // default findOne with a composite primary key isn't supported as far as I can tell
     @Query("SELECT * FROM user_wallets WHERE user_id = ?0 AND id = ?1")
     UserWallet findOne(UUID userId, UUID id);
 
-    // findAll with a composite primary key isn't supported
+    // default findAll with a composite primary key isn't supported
     @Query("SELECT * FROM user_wallets WHERE user_id = ?0")
     List<UserWallet> findAllByUserId(UUID userId);
+
+    @Query("INSERT INTO user_wallets (id, user_id, name, updated_at) VALUES (now(), ?0, ?1, toTimestamp(now()))")
+    UserWallet create(UUID userId, String name);
 
 }

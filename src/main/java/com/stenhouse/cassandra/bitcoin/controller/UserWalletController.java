@@ -3,10 +3,7 @@ package com.stenhouse.cassandra.bitcoin.controller;
 import com.stenhouse.cassandra.bitcoin.model.UserWallet;
 import com.stenhouse.cassandra.bitcoin.repositories.UserWalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -26,9 +23,19 @@ public class UserWalletController {
         return userWalletRepository.findAllByUserId(userId);
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public UserWallet createUserWallet(@PathVariable("user_id") UUID userId, @RequestBody UserWallet userWallet) {
+        return userWalletRepository.create(userId, userWallet.getName());
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public UserWallet getUserWallet(@PathVariable("user_id") UUID userId, @PathVariable("id") UUID id) {
         return userWalletRepository.findOne(userId, id);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public UserWallet updateUserWallet(@PathVariable("user_id") UUID userId, @PathVariable("id") UUID id) {
+        throw new UnsupportedOperationException();
     }
 
 }
