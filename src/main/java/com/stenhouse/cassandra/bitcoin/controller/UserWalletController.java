@@ -40,9 +40,8 @@ public class UserWalletController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteUserWallet(@PathVariable("user_id") UUID userId, @PathVariable("id") UUID id) {
+        // note: wallet addresses will stick around and will need another mechanism to purge them out
         userWalletRepository.delete(userId, id);
-
-        // TODO: delete all wallet addresses
     }
 
 }

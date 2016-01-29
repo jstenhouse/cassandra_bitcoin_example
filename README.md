@@ -10,6 +10,10 @@
 CASSANDRA_KEYSPACE=bitcoin ./gradlew run
 ```
 
+## TODO
+
+Move to URL scheme that doesn't get super long with UUIDs and nested resources. Something like /v1/users, /v1/wallets, /v1/addresses, etc.
+
 ### Users
 
 #### List
@@ -34,7 +38,10 @@ curl -H "Content-Type: application/json" -X PUT -d '{"firstName":"Eddy", "lastNa
 
 #### Delete
 
-TODO
+```
+curl -H "Content-Type: application/json" -X DELETE http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1
+```
+
 
 ### UserWallets
 
@@ -67,7 +74,32 @@ curl -H "Content-Type: application/json" -X DELETE http://localhost:8080/users/0
 
 ### WalletAddresses
 
-TODO
+#### List
+
+```
+http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1/wallets/61728140-c5b3-11e5-9912-ba0be0483c18/addresses
+
+http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1/wallets/61728140-c5b3-11e5-9912-ba0be0483c18/addresses/cd194de4-c67f-11e5-9912-ba0be0483c18
+```
+
+#### Create
+
+```
+curl -H "Content-Type: application/json" -X POST -d '{"address":"14yLN9pDadBjBJjm7JogjsLq8VC5SfnxPN"}' http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1/wallets/61728140-c5b3-11e5-9912-ba0be0483c18/addresses
+```
+
+#### Update
+
+```
+curl -H "Content-Type: application/json" -X PUT -d '{"address":"14yLN9pDadBjBJjm7JogjsLq8VC5SfKxXN"}' http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1/wallets/61728140-c5b3-11e5-9912-ba0be0483c18/addresses/cd194de4-c67f-11e5-9912-ba0be0483c18
+```
+
+#### Delete
+
+```
+curl -H "Content-Type: application/json" -X DELETE http://localhost:8080/users/0cd7ead0-c5a9-11e5-afeb-abdeecb176e1/wallets/61728140-c5b3-11e5-9912-ba0be0483c18/addresses/cd194de4-c67f-11e5-9912-ba0be0483c18
+```
+
 
 ### Cassandra Data
 

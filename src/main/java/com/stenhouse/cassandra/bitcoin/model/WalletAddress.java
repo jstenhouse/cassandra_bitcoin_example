@@ -11,43 +11,43 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * Created by jason on 1/27/16.
+ * Created by jason on 1/29/16.
  */
-@Table("user_wallets")
-public class UserWallet {
+@Table("wallet_addresses")
+public class WalletAddress {
 
     @PrimaryKey
     @JsonUnwrapped
-    private UserWalletId id;
+    private WalletAddressId id;
 
     @Column
-    private String name;
+    private String address;
 
     @Column("updated_at")
     private Date updatedAt;
 
-    public UserWallet() {}
+    public WalletAddress() {}
 
-    public UserWallet(final UserWalletId id, final String name, final Date updatedAt) {
+    public WalletAddress(final WalletAddressId id, final String address, final Date updatedAt) {
         this.id = id;
-        this.name = name;
+        this.address = address;
         this.updatedAt = updatedAt;
     }
 
-    public UserWalletId getId() {
+    public WalletAddressId getId() {
         return id;
     }
 
-    public void setId(final UserWalletId id) {
+    public void setId(final WalletAddressId id) {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getAddress() {
+        return address;
     }
 
-    public void setName(final String name) {
-        this.name = name;
+    public void setAddress(final String address) {
+        this.address = address;
     }
 
     public Date getUpdatedAt() {
@@ -62,42 +62,41 @@ public class UserWallet {
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("id", id)
-                .add("name", name)
+                .add("address", address)
                 .add("updatedAt", updatedAt)
                 .toString();
     }
 
-
     @PrimaryKeyClass
-    public static class UserWalletId implements Serializable {
+    public static class WalletAddressId implements Serializable {
 
-        @PrimaryKeyColumn(name = "user_id", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
-        private UUID userId;
+        @PrimaryKeyColumn(name = "wallet_id", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
+        private UUID walletId;
 
         @PrimaryKeyColumn(name = "id", ordinal = 1, type = PrimaryKeyType.CLUSTERED)
         private UUID id;
 
-        public UserWalletId() {}
+        public WalletAddressId() {}
 
-        public UUID getUserId() {
-            return userId;
+        public UUID getWalletId() {
+            return walletId;
         }
 
-        public void setUserId(final UUID userId) {
-            this.userId = userId;
+        public void setWalletId(UUID walletId) {
+            this.walletId = walletId;
         }
 
         public UUID getId() {
             return id;
         }
 
-        public void setId(final UUID id) {
+        public void setId(UUID id) {
             this.id = id;
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(userId, id);
+            return Objects.hash(walletId, id);
         }
 
         @Override
@@ -110,19 +109,18 @@ public class UserWallet {
                 return false;
             }
 
-            final UserWalletId otherId = (UserWalletId) other;
+            final WalletAddressId otherId = (WalletAddressId) other;
 
-            return Objects.equals(this.userId, otherId.getUserId())
+            return Objects.equals(this.walletId, otherId.getWalletId())
                     && Objects.equals(this.id, otherId.getId());
         }
 
         @Override
         public String toString() {
             return MoreObjects.toStringHelper(this)
-                    .add("userId", userId)
+                    .add("walletId", walletId)
                     .add("id", id)
                     .toString();
         }
     }
-
 }

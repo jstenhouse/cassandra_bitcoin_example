@@ -17,4 +17,7 @@ public interface UserRepository extends CassandraRepository<User> {
 
     @Query("UPDATE users SET first_name = ?1, last_name = ?2, email = ?3, updated_at = toTimestamp(now()) WHERE id = ?0")
     User update(UUID id, String firstName, String lastName, String email);
+
+    @Query("DELETE FROM users WHERE user_id = ?0")
+    void delete(UUID id);
 }
